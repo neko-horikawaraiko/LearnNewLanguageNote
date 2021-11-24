@@ -130,10 +130,10 @@ namespace std											//打开std命名空间
 	template <>											//模板特例化必须定义在原始模板命名空间中
 	struct hash<Sales_data2>							//特例化的hash，必须定义以下三方面
 	{
-		typedef size_t result_type;						//①类型成员result_type（名字不能变），为调用运算符的返回类型
-		typedef Sales_data2 argument_type;				//①类型成员argument_type（名字不能变），为调用运算符的参数类型，需要此类型有==
-		size_t operator()(const Sales_data2& s) const;	//②重载的调用运算符，接受同期关键字类型的对象，返回size_t
-		//合成拷贝控制成员和默认构造函数						//③默认构造函数和拷贝赋值运算符
+		typedef size_t result_type;						//(1)类型成员result_type（名字不能变），为调用运算符的返回类型
+		typedef Sales_data2 argument_type;				//(1)类型成员argument_type（名字不能变），为调用运算符的参数类型，需要此类型有==
+		size_t operator()(const Sales_data2& s) const;	//(2)重载的调用运算符，接受同期关键字类型的对象，返回size_t
+		//合成拷贝控制成员和默认构造函数					//(3)默认构造函数和拷贝赋值运算符
 	};
 
 	size_t hash<Sales_data2>::operator()(const Sales_data2& s) const
@@ -368,7 +368,7 @@ protected:
 	double discount = 0.0;
 };
 //派生列表的访问说明符表示派生类从基类继承的成员是否 对用户/对派生类的派生类 可见，派生类本身可访问基类public、protected成员
-//基类中的 → 成员，经过派生列表 ↓ 的访问说明符，		public		protected	private
+//基类中的 → 成员，经过派生列表 ↓ 的访问说明符，	public		protected	private
 //变为对外/对派生类的派生类↘
 //				public							public		protected	private
 //				protected						protected	protected	private
