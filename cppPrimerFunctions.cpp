@@ -460,15 +460,15 @@ void fun11()
 //顺序容器、容器适配器
 void fun12()
 {
-	//				<vector>	<deque>		<list>		<forward_list>	<array>		<string>
-	//				vector		deque		list		forward_list	array		string(相当于字符vector)
-	//大小			可变			可变			可变			可变				固定			可变
-	//访问			随机			随机			顺序			顺序				随机			随机
-	//访问方向								双向			单向
-	//快速添删元素位置	尾部			头尾			任何			任何				不能填删		尾部
+	//                  |  <vector>  |  <deque>	  |  <list>  |  <forward_list>  |  <array>   |  <string>
+	//                  |  vector    |  deque	  |  list    |  forward_list    |  array     |  string(相当于字符vector)
+	//大小              |    可变    |    可变    |   可变   |       可变       |    固定    |   可变
+	//访问              |    随机    |    随机    |   顺序   |       顺序       |    随机    |   随机
+	//访问方向          |            |            |   双向   |       单向       |            |
+	//快速添删元素位置  |    尾部    |    头尾    |   任何   |       任何       |  不能填删	 |   尾部
 	//
-	//选择原则：①默认vector；②元素小且空间额外开销重要，则不用list、forward_list；③随机访问则vector或deque；④中间插入删除则list或forward_list；⑤头尾插入删除则deque；
-	//⑥输入时中间插入，随后随机访问：是否可用vector添加然后sort排序；否则可用list插入，再拷贝到vector
+	//选择原则：(1)默认vector；(2)元素小且空间额外开销重要，则不用list、forward_list；(3)随机访问则vector或deque；(4)中间插入删除则list或forward_list；
+	//(5)头尾插入删除则deque；(6)输入时中间插入，随后随机访问：是否可用vector添加然后sort排序；否则可用list插入，再拷贝到vector
 
 	//以vector和list为例
 	using std::vector;
