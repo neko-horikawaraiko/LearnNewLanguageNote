@@ -677,76 +677,76 @@ edit by 猫耳堀川雷鼓/neko-horikawaraiko
     }
     ```
   
-    - 快速遍历（支持快速遍历的集合类需要声明`NSFastEnumeration`协议，实现`- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id)buffer count:(NSUInteger)len;`方法，缺点是拿不到对象的下标）
+   - 快速遍历（支持快速遍历的集合类需要声明`NSFastEnumeration`协议，实现`- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id)buffer count:(NSUInteger)len;`方法，缺点是拿不到对象的下标）
   
-      ```objective-c
-      // Array for内object的类名可以换成具体类，比如NSString
-      NSArray *anArray = /*...*/;
-      for (id object in anArray) {
-          // 使用object
-      }
+    ```objective-c
+    // Array for内object的类名可以换成具体类，比如NSString
+    NSArray *anArray = /*...*/;
+    for (id object in anArray) {
+        // 使用object
+    }
       
-      // Dictionary
-      NSDictionary *aDictionary = /*...*/;
-      for (id key in aDictionary) {
-          id value = aDictionary[key];
-          // 使用key、value
-      }
+    // Dictionary
+    NSDictionary *aDictionary = /*...*/;
+	for (id key in aDictionary) {
+        id value = aDictionary[key];
+        // 使用key、value
+    }
       
-      // Set
-      NSSet *aSet = /*...*/;
-      for (id object in aSet) {
-          // 使用object
-      }
+    // Set
+    NSSet *aSet = /*...*/;
+    for (id object in aSet) {
+        // 使用object
+    }
       
-      // 反向遍历
-      NSArray *anArray = /*...*/;
-      for (id object in [anArray reverseObjectEnumerator]) {
-          // 使用object
-      }
-      ```
+    // 反向遍历
+    NSArray *anArray = /*...*/; 
+    for (id object in [anArray reverseObjectEnumerator]) {
+        // 使用object
+    }
+    ```
   
-    - 基于块的遍历
+  - 基于块的遍历
   
-      ```objective-c
-      // Array
-      NSArray *anArray = /*...*/;
-      [anArray enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop){
-          // 使用object
-          if (/*应当停止循环的条件*/) {
-              *stop = YES;
-          }
-      }];
+    ```objective-c
+    // Array
+    NSArray *anArray = /*...*/;
+    [anArray enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop){
+        // 使用object
+        if (/*应当停止循环的条件*/) {
+            *stop = YES;
+        }
+    }];
       
-      // Dictionary
-      NSDictionary *aDictionary = /*...*/;
-      [aDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop){
-          // 使用key、object
-          if (/*应当停止循环的条件*/) {
-              *stop = YES;
-          }
-      }];
+    // Dictionary
+    NSDictionary *aDictionary = /*...*/;
+    [aDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop){
+        // 使用key、object
+        if (/*应当停止循环的条件*/) {
+            *stop = YES;
+        }
+    }];
       
-      // Set
-      NSSet *aSet = /*...*/;
-      [aSet enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop){
-          // 使用object
-          if (/*应当停止循环的条件*/) {
-              *stop = YES;
-          }
-      }];
+    // Set
+    NSSet *aSet = /*...*/;
+    [aSet enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop){
+        // 使用object
+        if (/*应当停止循环的条件*/) {
+            *stop = YES;
+        }
+    }];
       
-      // 添加遍历方式，比如并发NSEnumerationConcurrent、反向NSEnumerationReverse等，可以用按位或组合
-      // block可以更改签名为具体存的类型，可以让编译器检测是否写错
-      NSDictionary *aDictionary = /*...*/;
-      [aDictionary enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent
-                                           usingBlock:^(NSString *key, NSString *object, BOOL *stop){
-          // 使用key、object
-          if (/*应当停止循环的条件*/) {
-              *stop = YES;
-          }
-      }];
-      ```
+    // 添加遍历方式，比如并发NSEnumerationConcurrent、反向NSEnumerationReverse等，可以用按位或组合
+    // block可以更改签名为具体存的类型，可以让编译器检测是否写错
+    NSDictionary *aDictionary = /*...*/;
+    [aDictionary enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent
+                                         usingBlock:^(NSString *key, NSString *object, BOOL *stop){
+        // 使用key、object
+        if (/*应当停止循环的条件*/) {
+            *stop = YES;
+        }
+    }];
+    ```
   
 
 ### 49.对自定义其内存管理语义的collection使用无缝桥接
