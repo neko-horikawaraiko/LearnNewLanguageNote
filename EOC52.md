@@ -61,7 +61,7 @@ edit by 猫耳堀川雷鼓/neko-horikawaraiko
   ```
 
 - `atomic`（默认）、`nonatomic`：是否原子性
-- `readwrite`（默认）、`readonly`：外部读写性。可以对外公开为只读，而在分类中重新定义为读写（[第27条](#27使用“class-continuation分类”隐藏实现细节)）
+- `readwrite`（默认）、`readonly`：外部读写性。可以对外公开为只读，而在分类中重新定义为读写（[第27条](#27使用class-continuation分类隐藏实现细节)）
 - `assign`对简单值类型赋值；`strong`“拥有”，保留新值，释放旧值，再把新值设置上去；`weak`“非拥有”，不保留新值，不释放旧值，所指对象销毁时该属性清空；`unsafe_unretained`对对象类型的assign，“非拥有”，所指对象销毁时属性值不清空；`copy`深拷贝
 - `getter=<name>`name换为方法名，重设属性的获取方法名；`setter=<name>`name换为方法名，重设属性的设置方法名，不常见
 - 注意自己实现相应存取方法时要对应所声明的特质，比如声明特质有`copy`，自定设置方法中就要深拷贝相关对象
@@ -200,7 +200,7 @@ edit by 猫耳堀川雷鼓/neko-horikawaraiko
   
   - 元类对象结构：isa指针（指向`NSObject`的元类对象）、super_class指针（指向父类的元类对象，根类`NSObject`元类对象的此指针指向`NSObject`类对象）、类方法（+开头的方法）的信息等
 
-![对象结构层级](./pic/EOC-class_hierarchy.png)
+![对象结构层级](./pics/EOC-class_hierarchy.png)
 
 - 查询类型信息（判断是否为某个类实例）：
   - `isMemberOfClass:`判断对象是否为某类的实例
@@ -945,4 +945,4 @@ edit by 猫耳堀川雷鼓/neko-horikawaraiko
   @end
   ```
 
-- 新加分类里，计时器自身执行`eoc_blockInvoke`，`eoc_blockInvoke`里执行 使用计时器的类 传入的block，该block是通过copy拷贝到堆上保证块不会无效，同时计时器的`userInfo`引用了该块。似乎计时器强引用了self，还是循环引用，但是实际上**`NSTimer`是个类对象，是个单例**，无需回收，不用担心循环引用的问题。在使用中，使用新加的`eoc_scheduledTimerWithTimeInterval...`方法，传入块，此时可以只用外面weak里面strong方法切断保留环。（类实例变量保留计时器，计时器保留块，而块捕获了弱引用，保留的是弱引用`weakSelf`而不是强引用`self`，打破了保留环。块里strong是为了实例在块执行期间存活）如果EOCClass实例的引用计数降为0，`dealloc`会停止计时器任务。即使`dealloc`忘了写`invalidate`，`weakSelf`也会变成`nil`而没法相应消息
+- 新加分类里，计时器自身执行`eoc_blockInvoke`，`eoc_blockInvoke`里执行 使用计时器的类 传入的block，该block是通过copy拷贝到堆上保证块不会无效，同时计时器的`userInfo`引用了该块。似乎计时器强引用了self，还是循环引用，但是实际上`NSTimer`**是个类对象，是个单例**，无需回收，不用担心循环引用的问题。在使用中，使用新加的`eoc_scheduledTimerWithTimeInterval...`方法，传入块，此时可以只用外面weak里面strong方法切断保留环。（类实例变量保留计时器，计时器保留块，而块捕获了弱引用，保留的是弱引用`weakSelf`而不是强引用`self`，打破了保留环。块里strong是为了实例在块执行期间存活）如果EOCClass实例的引用计数降为0，`dealloc`会停止计时器任务。即使`dealloc`忘了写`invalidate`，`weakSelf`也会变成`nil`而没法相应消息
