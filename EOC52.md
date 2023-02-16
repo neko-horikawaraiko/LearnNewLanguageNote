@@ -677,7 +677,7 @@ edit by 猫耳堀川雷鼓/neko-horikawaraiko
     }
     ```
   
-   - 快速遍历（支持快速遍历的集合类需要声明`NSFastEnumeration`协议，实现`- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id)buffer count:(NSUInteger)len;`方法，缺点是拿不到对象的下标）
+  - 快速遍历（支持快速遍历的集合类需要声明`NSFastEnumeration`协议，实现`- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id)buffer count:(NSUInteger)len;`方法，缺点是拿不到对象的下标）
   
     ```objective-c
     // Array for内object的类名可以换成具体类，比如NSString
@@ -688,7 +688,7 @@ edit by 猫耳堀川雷鼓/neko-horikawaraiko
       
     // Dictionary
     NSDictionary *aDictionary = /*...*/;
-	for (id key in aDictionary) {
+    for (id key in aDictionary) {
         id value = aDictionary[key];
         // 使用key、value
     }
