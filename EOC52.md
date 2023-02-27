@@ -824,7 +824,7 @@ edit by 猫耳堀川雷鼓/neko-horikawaraiko
 
   ```objective-c
   // 两种缓存设限方式
-  NSCache cache = [NSCache alloc] init];
+  NSCache *cache = [[NSCache alloc] init];
   cache.countLimit = 100; // cache对象存储个数上限100
   cache.totalCostLimit = 5 * 1024 * 1024; // cache对象存储空间上限5MB
   ```
