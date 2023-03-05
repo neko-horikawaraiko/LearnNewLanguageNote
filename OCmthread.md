@@ -1,3 +1,9 @@
+# 《Objective-C高级编程 iOS与OS X多线程和内存管理》阅读笔记
+
+
+edited buy 猫耳堀川雷鼓/neko-horikawaraiko
+
+
 ### 1.2 内存管理/引用计数
 
 - 以`alloc`、`new`、`copy`、`mutableCopy`开头（驼峰命名法）的函数返回的对象归调用者持有（retainCount增加1），函数内不持有（所以`[[NSObject alloc] init]`，调用`alloc`时就已经增加了引用计数）
