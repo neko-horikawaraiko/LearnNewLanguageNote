@@ -12,3 +12,4 @@
 ### Objective-C
 
 - [《Effective Objective-C 2.0  编写高质量iOS与OS X代码的52个有效方法（第二版）》笔记](./EOC52.md)
+- [《Objective-C高级编程 iOS与OS X多线程和内存管理》阅读笔记](./OCmthread.md)
