@@ -1,4 +1,4 @@
-# 学习《Effective Objective-C 2.0  编写高质量iOS与OS X代码的52个有效方法（第二版）》笔记
+# 《Effective Objective-C 2.0  编写高质量iOS与OS X代码的52个有效方法（第二版）》学习笔记
 
 edit by 猫耳堀川雷鼓/neko-horikawaraiko
 
