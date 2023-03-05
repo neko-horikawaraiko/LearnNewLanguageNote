@@ -520,7 +520,7 @@ int main() {
 
 - 注：私下测试中，block中不使用（捕获）自动变量时，还是`_NSConcreteStackBlock`（Apple clang version 13.1.6 (clang-1316.0.21.2.5)，API Objective-C 2.0）
 
-![测试结果](pics/测试结果.png)
+![测试结果](pics/OCmthread-testStackBlock.png)
 
 #### 2.3.5 `__block`变量存储域
 
