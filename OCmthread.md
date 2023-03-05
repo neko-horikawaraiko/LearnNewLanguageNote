@@ -1,8 +1,6 @@
 # 《Objective-C高级编程 iOS与OS X多线程和内存管理》阅读笔记
 
-
-edited buy 猫耳堀川雷鼓/neko-horikawaraiko
-
+edit by 猫耳堀川雷鼓/neko-horikawaraiko
 
 ### 1.2 内存管理/引用计数
 
