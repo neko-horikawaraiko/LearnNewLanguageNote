@@ -125,6 +125,7 @@ edit by 猫耳堀川雷鼓/neko-horikawaraiko
 
 - 备援接收者：对象可以通过`+(id)forwardingTargetForSelector:(SEL)selector`返回可以处理该消息（selector）的对象，比如对象将可以处理消息的子对象返回
 - 完整的消息转发：创建`NSInvocation`对象，将selector、目标（target）、参数等所有细节包含其中。消息派发系统（message-dispatch system）将该消息对象指派给目标对象。对象可以通过调用`-(void)forwardInvocation:(NSInvocation*)invocation`改变调用目标，将消息转给新对象。这种方式与备援接受者方式相同，故常常当需要改变消息内容（追加参数、改变selector等）时才会进行方法实现。并且若发现某操作不应由本类处理，则需调用超类同名方法。
+- `v@:@`、`@@:`含义解析：整个字符串表示方法签名类型，`v`代表`void`，`@`代表一种`id`类型，比如`id`、`NSArray`、`NSString`等，`:`表示`SEL`，所以基本就是第一个符号代表返回值类型，第2、3个字符固定代表了`id self`和`SEL _cmd`。
 
 ### 13.用“方法调配技术”调试“黑盒方法”
 
